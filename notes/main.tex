@@ -1,0 +1,147 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color}
+\author{Høgni Beinisson}
+
+\usepackage{fancyhdr}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Algorithms}
+\rhead{Høgni Beinisson (hogni@it4.fo)}
+\rfoot{Page \thepage}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Every day algorithms}\\[1.5cm] % Name of your 
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+\hfill \break
+
+%\HRule \\[0.4cm]
+{ \huge \bfseries Short cuts to algorithms}\\[0.4cm] % Title of your document
+%\HRule \\[1.5cm]
+\hfill \break
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Høgni \textsc{Beinisson} (hogni@it4.fo)\\
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\tableofcontents
+
+\clearpage
+
+\lstset{language=Java}
+\lstset{frame=single}
+\lstset{numbers=left}
+
+\section{Introduction}
+These pages are primarily written for myself to better understand algorithms.\\
+
+I'm starting to like Open Source better and better for each day that goes by, and there for I have decided to host these notes and java programs on github, for everyone to share and use.
+
+All the code is published with the \textit{GNU General Public License} - so are these pages.
+\\
+
+Hopefully someone out there will benefit of these few pages, and the sample java code these pages are based on.\\
+
+I'm not providing any proofs for these algorithms. These proofs can be found in well written text books. These pages simply try to describe some of the most general algorithms in some easy steps.
+\clearpage
+
+\section{Insertion Sort}
+Insertion sort works by taking an array of elements - in our case integers - which then are sorted.
+The sorting algorithm works, by maintaining an sorted list on the left side of an array pointer, and moving the array pointer to the right - one index at the time, while maintaining the sorted list on the left side.
+
+Every time the pointer moves to the right, the element that the pointer points to, is compared to the previous element. If these elements should swap place, they swap. If necessary, the swap is done again and again, until this new element in the left list has found it's final position. 
+
+We now have a larger, but still sorted, list on the left side and a smaller unordered list on the right side. When the algorithm is done, the whole list is ordered.
+
+When an element is added to the list, the element is given the position farthest to the right, and then the swap is initiated.\\
+
+\noindent
+Step 1: {\color{blue}[2][5]}[1][10][4] $\rightarrow$ {\color{blue}[2][5]}[1][10][4]\\
+\noindent
+Step 2: [2]{\color{blue}[5][1]}[10][4] $\rightarrow$ [2]{\color{blue}[1][5]}[10][4]\\
+\noindent
+Step 2: {\color{blue}[2][1]}[5][10][4] $\rightarrow$ {\color{blue}[1][2]}[5][10][4]\\
+\noindent
+Step 3: [1][2]{\color{blue}[5][10]}[4] $\rightarrow$ [1][2]{\color{blue}[5][10]}[4]\\
+\noindent
+Step 4: [1][2][5]{\color{blue}[10][4]} $\rightarrow$ [1][2][5]{\color{blue}[4][10]}\\
+\noindent
+Step 5: [1][2]{\color{blue}[5][4]}[10] $\rightarrow$ [1][2]{\color{blue}[4][5]}[10]\\
+\noindent
+Step 5: [1]{\color{blue}[2][4]}[5][10] $\rightarrow$ [1]{\color{blue}[2][4]}[5][10]\\
+
+\noindent
+The result is the array [1][2][4][5][10]
+
+\subsection{Java example of Insertion Sort}
+\begin{lstlisting}
+for( int pointer = 1; pointer < count; pointer++ ) {
+  int tp = pointer;
+  while(tp >= 1 && ( unsorted.get(tp) < 
+        unsorted.get(tp-1)) ) {
+    int tmp = unsorted.get(tp-1);
+    unsorted.set(tp-1, unsorted.get(tp));
+    unsorted.set(tp, tmp);
+    tp--;
+  }
+}
+\end{lstlisting}
+\section{Merge Sort}
+
+\subsection{Java example of Merge Sort}
+
+
+\end{document}
