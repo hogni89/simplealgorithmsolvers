@@ -22,30 +22,42 @@ public class Mergesort {
 
 	public static void main(String[] args) {
 		int count = args.length;
+		ArrayList<ArrayList> arrays = new ArrayList<ArrayList>();
+
 
 		// fetch the unsorted list
-		ArrayList<Integer> unsorted = new ArrayList<Integer>(count);
 		for( int i = 0; i < count; i++) {
-			unsorted.add(Integer.parseInt(args[i]));
+			ArrayList<Integer> innerList = new ArrayList<Integer>();
+			innerList.add(Integer.parseInt(args[i]));
+			arrays.add(innerList);
 		}
 
-		ArrayList<Integer> a = new ArrayList<Integer>(3);
-		ArrayList<Integer> b = new ArrayList<Integer>(3);
 
-		a.add(3);
-		a.add(6);
-		a.add(9);
+		while(arrays.size() > 1) {
+			ArrayList<ArrayList> tmpList = new ArrayList<ArrayList>();
+			int i = 0;
+			while(i < arrays.size()) {
 
-		b.add(1);
-		b.add(7);
-		b.add(8);
-
-		ArrayList<Integer> result = merge(a,b);
-
-		for(int i = 0; i < 6; i++) {
-			System.out.println(result.get(i));
+				if(i+1 < arrays.size()) {
+					// Add two lists
+					tmpList.add( merge(arrays.get(i), arrays.get(i+1)) );
+				} else {
+					// Nothing to merge. Just add last element
+					tmpList.add( arrays.get(i) );
+				}
+				// Increment i with two
+				i = i + 2;
+			}
+			arrays = tmpList;
 		}
+
+		ArrayList<Integer> innerList = arrays.get(0);
+		for(int i = 0; i < innerList.size(); i++) {
+			System.out.println(innerList.get(i));
+		}
+
 	}
+	
 
 	private static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
 		int aLen = a.size();
