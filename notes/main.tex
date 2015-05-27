@@ -129,19 +129,6 @@ The result is the array [1][2][4][5][10]
 \noindent
 Note: Insertion sort has a worst-case running time of $\Theta$(\textit{n$^{2}$})
 
-\subsection{Java example of Insertion Sort}
-\begin{lstlisting}
-for( int pointer = 1; pointer < count; pointer++ ) {
-  int tp = pointer;
-  while(tp >= 1 && ( unsorted.get(tp) < 
-        unsorted.get(tp-1)) ) {
-    int tmp = unsorted.get(tp-1);
-    unsorted.set(tp-1, unsorted.get(tp));
-    unsorted.set(tp, tmp);
-    tp--;
-  }
-}
-\end{lstlisting}
 \clearpage
 
 \section{Merge Sort}
@@ -152,28 +139,44 @@ There for we simply tread each array element as an array. Two and two of the arr
 \noindent
 \textbf{[10] - [5] - [3] - [12] - [6] - [2]}\\
 \indent
-[10] - [5] $\rightarrow$ [5][10]\\
+[10] - {\color{blue}[5]} $\rightarrow$ {\color{blue}[5][10]}\\
 \indent
-[3] - [12] $\rightarrow$ [3][12]\\
+{\color{blue}[3]} - [12] $\rightarrow$ {\color{blue}[3][12]}\\
 \indent
-[6] - [2]  $\rightarrow$ [2][6]\\
+[6] - {\color{blue}[2]}  $\rightarrow$ {\color{blue}[2][6]}\\
 
 \noindent
 \textbf{[5][10] - [3][12] - [2][6]}\\
 \indent
 [5][10] - [3][12]\\
 \indent\indent
-[5]([10]) - [3]([12]) $\rightarrow$ \textbf{[3]} - [5][10] - [12]\\
+[5]([10]) - {\color{blue}[3]}([12]) $\rightarrow$ {\color{blue}[3]} - [5][10] - [12]\\
 \indent\indent
-[5]([10]) - [12] $\rightarrow$ \textbf{[3][5]} - [10] - [12]\\
+{\color{blue}[5]}([10]) - [12] $\rightarrow$ {\color{blue}[3][5]} - [10] - [12]\\
 \indent\indent
-[10] - [12] $\rightarrow$ \textbf{[3][5][10]} - [12] \\
+{\color{blue}[10]} - [12] $\rightarrow$ {\color{blue}[3][5][10]} - [12]\\
 \indent\indent
-[12] $\rightarrow$ \textbf{[3][5][10][12]} \\
+{\color{blue}[12]} $\rightarrow$ {\color{blue}[3][5][10][12]}\\
 
+\noindent
+\textbf{[3][5][10][12] - [2][6]}\\
+\indent
+[3]([5][10][12]) - {\color{blue}[2]}([6]) $\rightarrow$ {\color{blue}[2]} - [3][5][10][12] - [6]\\
+\indent
+{\color{blue}[3]}([5][10][12]) - [6] $\rightarrow$ {\color{blue}[2][3]} - [5][10][12] - [6]\\
+\indent
+{\color{blue}[5]}([10][12]) - [6] $\rightarrow$ {\color{blue}[2][3][5]} - [10][12] - [6]\\
+\indent
+[10][12] - {\color{blue}[6]} $\rightarrow$ {\color{blue}[2][3][5][6]} - [10][12]\\
+\indent
+{\color{blue}[10]}([12]) $\rightarrow$ {\color{blue}[2][3][5][6][10]} - [12]\\
+\indent
+{\color{blue}[12]} $\rightarrow$ {\color{blue}[2][3][5][6][10][12]}\\
 
-
-\subsection{Java example of Merge Sort}
+\noindent
+The result is the array [2][3][5][6][10][12]\\
+\noindent
+Note: Insertion sort has a worst-case time of $\Theta$(\textit{n} lg \textit{n})
 
 
 \end{document}
