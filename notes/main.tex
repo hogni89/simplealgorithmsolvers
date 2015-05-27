@@ -145,7 +145,33 @@ for( int pointer = 1; pointer < count; pointer++ ) {
 \clearpage
 
 \section{Merge Sort}
-Merge sort is a divide and conquer algorithm. We divide the 
+Merge sort is a divide and conquer algorithm. We divide the initial unsorted array into smaller parts, until we reach a state where we only have sorted arrays. In most cases (and in our code) we simply assume that an array is sorted, when the size of the array is 1.
+
+There for we simply tread each array element as an array. Two and two of the arrays are then merged. When merging two arrays, we simply compare the first elements of both of the arrays. The chosen one is removed from its original array and put in our new result array. When both the input arrays have a size of 0 (zero), we have a new and larger sorted array.\\
+
+\noindent
+\textbf{[10] - [5] - [3] - [12] - [6] - [2]}\\
+\indent
+[10] - [5] $\rightarrow$ [5][10]\\
+\indent
+[3] - [12] $\rightarrow$ [3][12]\\
+\indent
+[6] - [2]  $\rightarrow$ [2][6]\\
+
+\noindent
+\textbf{[5][10] - [3][12] - [2][6]}\\
+\indent
+[5][10] - [3][12]\\
+\indent\indent
+[5]([10]) - [3]([12]) $\rightarrow$ \textbf{[3]} - [5][10] - [12]\\
+\indent\indent
+[5]([10]) - [12] $\rightarrow$ \textbf{[3][5]} - [10] - [12]\\
+\indent\indent
+[10] - [12] $\rightarrow$ \textbf{[3][5][10]} - [12] \\
+\indent\indent
+[12] $\rightarrow$ \textbf{[3][5][10][12]} \\
+
+
 
 \subsection{Java example of Merge Sort}
 
