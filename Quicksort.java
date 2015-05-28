@@ -40,7 +40,7 @@ public class Quicksort {
 	private static void quickSort(ArrayList<Integer> arr, int p, int q) {
 		if(p < q) {
 			int r = partition(arr, p, q);
-			quickSort(arr, p, r);
+			quickSort(arr, p, r-1);
 			quickSort(arr, r+1, q);
 		}
 	}

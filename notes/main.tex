@@ -176,7 +176,48 @@ There for we simply tread each array element as an array. Two and two of the arr
 \noindent
 The result is the array [2][3][5][6][10][12]\\
 \noindent
-Note: Insertion sort has a worst-case time of $\Theta$(\textit{n} lg \textit{n})
+Note: Merge sort has a worst-case time of $\Theta$(\textit{n} lg \textit{n})
+
+\clearpage
+
+\section{Quick Sort}
+Quick sort is a divide and conquer algorithm. The algorithm is a combination of two parts. A partition method and a recursive call. 
+
+In the partition method a pivot is chosen from the array and all the elements in the array that are less or equal to the pivot are placed on the left side of the pivot, while all the elements that are larger or equal to the pivot are placed on the right side of the pivot.
+
+The pivot is in our implementation the first element in the array to be sorted.
+
+The recursive parts then calls the partition method again, but this time with the left side of the array and the right side of the array - omitting the pivot.
+
+When the recursion is done, the array is ordered.\\
+
+The detailed steps are trivial. If the reader looks at the code, the steps should reveal them self.
+
+\noindent
+Initial call: Array = [4][10][5][3][12][6][2], p = 0, q = 8\\
+\noindent
+In the first partition call, the result array is: \\
+\noindent
+[2][3]{\color{blue}[4]}[10][12][6][5] - Where 4 was the pivot.\\
+
+\noindent
+The next recursive call will be: Array [2][3][4][10][12][6][5], p = 0, q = 3\\
+\noindent
+The result array is:
+{\color{blue}[2]}[3][4][10][12][6][5] - Where 2 was the pivot.\\
+
+\noindent
+The next recursive call will be: Array [2][3][4][10][12][6][5], p = 3, q = 8\\
+\noindent
+The result array is:
+[2][3][4][5][6]{\color{blue}[10]}[12] - Where 10 was the pivot.\\
 
 
+
+\noindent
+The result is the array [2][3][4][5][6][10][12]\\
+\noindent
+Note: Quick sort has a worst-case time of $\Theta$(\textit{n} lg \textit{n})
+
+\clearpage
 \end{document}
